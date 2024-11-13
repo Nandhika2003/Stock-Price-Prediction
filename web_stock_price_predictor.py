@@ -40,23 +40,19 @@ ma_250 = st.sidebar.checkbox("Show MA for 250 Days")
 splitting_len = int(len(google_data) * 0.7)
 x_test = google_data[['Close']].iloc[splitting_len:].copy()  # Ensure 'Close' column exists in x_test
 
-# Debugging output for x_test
-st.write("Debugging Info: x_test columns:", x_test.columns)
-st.write(x_test.head())
-
-# Function to plot graphs
-def plot_graph(figsize, values, full_data, extra_data=0, extra_dataset=None, title="Stock Price"):
-    fig = plt.figure(figsize=figsize)
-    plt.plot(values, 'Orange', label='Moving Average')
-    plt.plot(full_data.Close, 'b', label='Original Close Price')
-    if extra_data:
-        plt.plot(extra_dataset, 'g', label='Extra Data')
-    plt.title(title)
-    plt.xlabel("Time")
-    plt.ylabel("Price")
-    plt.legend(loc="best")
-    plt.grid(True)
-    return fig
+# # Function to plot graphs
+# def plot_graph(figsize, values, full_data, extra_data=0, extra_dataset=None, title="Stock Price"):
+#     fig = plt.figure(figsize=figsize)
+#     plt.plot(values, 'Orange', label='Moving Average')
+#     plt.plot(full_data.Close, 'b', label='Original Close Price')
+#     if extra_data:
+#         plt.plot(extra_dataset, 'g', label='Extra Data')
+#     plt.title(title)
+#     plt.xlabel("Time")
+#     plt.ylabel("Price")
+#     plt.legend(loc="best")
+#     plt.grid(True)
+#     return fig
 
 # Plots for Moving Averages
 if ma_250:
