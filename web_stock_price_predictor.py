@@ -40,6 +40,10 @@ ma_250 = st.sidebar.checkbox("Show MA for 250 Days")
 splitting_len = int(len(google_data) * 0.7)
 x_test = google_data[['Close']].iloc[splitting_len:].copy()  # Ensure 'Close' column exists in x_test
 
+# Debugging output for x_test
+st.write("Debugging Info: x_test columns:", x_test.columns)
+st.write(x_test.head())
+
 # Function to plot graphs
 def plot_graph(figsize, values, full_data, extra_data=0, extra_dataset=None, title="Stock Price"):
     fig = plt.figure(figsize=figsize)
@@ -80,7 +84,7 @@ scaler = MinMaxScaler(feature_range=(0,1))
 
 # Scale data if 'Close' column exists
 if 'Close' in x_test.columns:
-    scaled_data = scaler.fit_transform(x_test)
+    scaled_data = scaler.fit_transform(x_test[['Close']])
 else:
     st.error("Error: 'Close' column is missing in x_test.")
     scaled_data = None
