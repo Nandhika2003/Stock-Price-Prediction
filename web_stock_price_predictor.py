@@ -76,7 +76,11 @@ if ma_100 and ma_250:
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler(feature_range=(0,1))
-scaled_data = scaler.fit_transform(x_test[['Close']])
+if 'Close' in x_test.columns:
+    scaled_data = scaler.fit_transform(x_test[['Close']])
+else:
+    print("Error: 'Close' column is missing in x_test.")
+
 
 x_data = []
 y_data = []
